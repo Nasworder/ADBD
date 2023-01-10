@@ -151,3 +151,31 @@ select concat(nom, prenom) from etudiant;
 
 #6 Remplacer tous les ‘i’ par des ‘o’ dans le nom de chaque étudiant.
 select replace(nom, "i", "o") from etudiant;
+
+# 5  Afficher les noms, prénoms et date de naissance de tous les étudiants, dont Aline Rochat est responsable.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
