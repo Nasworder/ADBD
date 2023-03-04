@@ -1,0 +1,44 @@
+DROP DATABASE IF EXISTS epicerie;
+CREATE DATABASE epicerie;
+
+USE epicerie;
+
+DROP TABLE IF EXISTS contact_temp;
+
+CREATE TEMPORARY TABLE contact_temp (
+    nom VARCHAR(255) NOT NULL,
+    prenom VARCHAR(255) NOT NULL,
+    tel VARCHAR(255) NOT NULL,
+    dept VARCHAR(255) NOT NULL,
+    site VARCHAR(255) NOT NULL,
+    local VARCHAR(255) NOT NULL,
+    genre VARCHAR(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS legume_temp;
+
+CREATE TEMPORARY TABLE legume_temp (
+    nom VARCHAR(255) NOT NULL,
+    date date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+# load file into table
+LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/03 personnes.csv' INTO TABLE contact_temp FIELDS TERMINATED BY ';' LINES TERMINATED BY '\n' IGNORE 1 LINES;
+
+LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/03 legumes.txt' INTO TABLE legume_temp FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n';
+
+SELECT COUNT(*) FROM contact_temp;
+
+
+SELECT COUNT(*) FROM legume_temp;
+
+CREATE TABLE contact (
+    id PRIMARY KEY INT AUTO_INCREMENT,
+    nom VARCHAR(255) NOT NULL,
+    prenom VARCHAR(255) NOT NULL,
+    tel VARCHAR(255) NOT NULL,
+    département VARCHAR(255) NOT NULL,
+    site VARCHAR(255) NOT NULL,
+    localité VARCHAR(255) NOT NULL,
+    genre VARCHAR(255) NOT NULL,
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
